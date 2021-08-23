@@ -27,7 +27,7 @@ export interface DataListProps extends TransactionCardProps {
 }
 
 export function Dashboard() {
-  const data: Array<DataListProps> = [
+  const data: DataListProps[] = [
     {
       title: "Desenvolvimento de site",
       amount: "R$ 12.000,00",
