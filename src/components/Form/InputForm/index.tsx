@@ -1,7 +1,7 @@
 import React from "react";
 import { Control, Controller } from "react-hook-form";
 import { TextInputProps } from "react-native";
-import { Input } from "../Form/Input";
+import { Input } from "../Input";
 
 import { Container } from "./styles";
 
