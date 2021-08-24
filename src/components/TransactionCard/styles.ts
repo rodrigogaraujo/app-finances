@@ -7,7 +7,7 @@ interface TransactionProps {
 }
 
 export const Container = styled.View`
-  width: ${RFValue(300)}px;
+  width: 100%;
   background-color: ${({ theme, }) =>  theme.colors.shape};
   border-radius: ${RFValue(5)}px;
   padding: ${RFValue(17)}px ${RFValue(24)}px;
