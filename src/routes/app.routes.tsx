@@ -5,6 +5,7 @@ import { useTheme } from "styled-components";
 
 import { Dashboard } from "../screens/Dashboard";
 import { Register } from "../screens/Register";
+import { Resume } from "../screens/Resume";
 
 type MaterialIconName = React.ComponentProps<typeof MaterialIcons>["name"];
 
@@ -53,7 +54,7 @@ export function AppRoutes() {
     >
       <Screen name="Listagem" component={Dashboard} />
       <Screen name="Cadastrar" component={Register} />
-      <Screen name="Resumo" component={Register} />
+      <Screen name="Resumo" component={Resume} />
     </Navigator>
   );
 }
