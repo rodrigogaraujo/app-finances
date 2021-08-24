@@ -2,14 +2,20 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
-import { Platform } from "react-native";
 
 import { Dashboard } from "../screens/Dashboard";
 import { Register } from "../screens/Register";
 
 type MaterialIconName = React.ComponentProps<typeof MaterialIcons>["name"];
 
-const { Navigator, Screen } = createBottomTabNavigator();
+export type RootBottomTabParamList = {
+  Listagem: undefined;
+  Cadastrar: undefined;
+  Resumo: undefined;
+};
+
+const { Navigator, Screen } =
+  createBottomTabNavigator<RootBottomTabParamList>();
 
 export function AppRoutes() {
   const theme = useTheme();
