@@ -9,6 +9,7 @@ import { useAuth } from "../hooks/Auth";
 
 export function Routes() {
   const { user } = useAuth();
+
   return (
     <NavigationContainer>
       {user.id ? <AppRoutes /> : <AuthRoutes />}

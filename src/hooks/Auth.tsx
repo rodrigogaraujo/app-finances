@@ -9,6 +9,7 @@ import React, {
 import * as AppleAuthentication from "expo-apple-authentication";
 import * as AuthSession from "expo-auth-session";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Platform } from "react-native";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -32,6 +33,8 @@ interface AuthContextData {
   user: User;
   signInWithGoogle(): Promise<void>;
   signInWithApple(): Promise<void>;
+  signOut(): Promise<void>;
+  loading: boolean;
 }
 
 const { CLIENT_ID } = process.env;
@@ -41,6 +44,7 @@ export const AuthContext = createContext({} as AuthContextData);
 
 function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>({} as User);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function loadUser() {
@@ -48,9 +52,18 @@ function AuthProvider({ children }: AuthProviderProps) {
       if (resp) {
         setUser(JSON.parse(resp));
       }
+      setIsLoading(false);
     }
     loadUser();
   }, []);
+
+  async function signOut() {
+    if (Platform.OS === "ios") {
+      AppleAuthentication.signOutAsync({ user: user.id });
+    }
+    await AsyncStorage.removeItem("@gofinances:user");
+    setUser({} as User);
+  }
 
   async function signInWithGoogle() {
     try {
@@ -117,6 +130,8 @@ function AuthProvider({ children }: AuthProviderProps) {
         user,
         signInWithGoogle,
         signInWithApple,
+        loading: isLoading,
+        signOut,
       }}
     >
       {children}
