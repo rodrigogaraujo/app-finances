@@ -15,6 +15,7 @@ export const Header = styled.View`
 
 export const TitleWrapper = styled.View`
   align-items: center;
+  padding-top: ${RFValue(60)}px;
 `;
 
 export const Title = styled.Text`
@@ -30,7 +31,7 @@ export const SignInTitle = styled.Text`
   font-size: ${RFValue(16)}px;
   color: ${({theme}) => theme.colors.shape};
   text-align: center;
-  margin-top: ${RFValue(80)}px;
+  margin-top: ${RFValue(60)}px;
   margin-bottom: ${RFValue(67)}px;
 `;
 
