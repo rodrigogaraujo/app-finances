@@ -112,7 +112,7 @@ function AuthProvider({ children }: AuthProviderProps) {
           id: String(credential.user),
           email: credential.email!,
           name,
-          photo: undefined,
+          photo,
         };
         setUser(userLogged);
         await AsyncStorage.setItem(

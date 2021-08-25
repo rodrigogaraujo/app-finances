@@ -29,10 +29,10 @@ export function SignIn() {
       signInWithGoogle();
     } catch (er) {
       console.log(er);
-      Alert.alert("Atenção", "Nao foi possivel conectar a conta Google.");
-    } finally {
       setIsLoading(false);
+      Alert.alert("Atenção", "Nao foi possivel conectar a conta Google.");
     }
+    setIsLoading(false);
   }
 
   async function handleSignInWithApple() {
@@ -41,9 +41,8 @@ export function SignIn() {
       signInWithApple();
     } catch (er) {
       console.log(er);
-      Alert.alert("Atenção", "Nao foi possivel conectar a conta Apple.");
-    } finally {
       setIsLoading(false);
+      Alert.alert("Atenção", "Nao foi possivel conectar a conta Apple.");
     }
   }
 
