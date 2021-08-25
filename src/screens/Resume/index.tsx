@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useTheme } from "styled-components";
 import { ActivityIndicator } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 // import { VictoryPie } from "victory-native";
 import { addMonths, format } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -40,10 +41,9 @@ export function Resume() {
     TotalCategoryProps[]
   >([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleChangeDate(action: "next" | "prev") {
-    setIsLoading(true);
     if (action === "next") {
       setSelectedDate((stt) => addMonths(stt, 1));
     } else {
@@ -52,6 +52,7 @@ export function Resume() {
   }
 
   async function loadData() {
+    setIsLoading(true);
     try {
       const dataKey = "@gofinances:transactions";
       const asyncData = await AsyncStorage.getItem(dataKey);
@@ -107,9 +108,11 @@ export function Resume() {
     }
   }
 
-  useEffect(() => {
-    loadData();
-  }, [selectedDate]);
+  useFocusEffect(
+    useCallback(() => {
+      loadData();
+    }, [selectedDate])
+  );
 
   return (
     <Container>
