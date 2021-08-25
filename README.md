@@ -12,9 +12,9 @@ App GoFinances
 - Expo
 
 # Preview
-<img src="https://github.com/rodrigogaraujo/app-finances/blob/master/Screenshot_20210825-004227.png" width="450"/>
-<img src="https://github.com/rodrigogaraujo/app-finances/blob/master/Screenshot_20210825-004241.png" width="450"/>
-<img src="https://github.com/rodrigogaraujo/app-finances/blob/master/Screenshot_20210825-004245.png" width="450"/>
+<img src="https://github.com/rodrigogaraujo/app-finances/blob/main/Screenshot_20210825-004227.png" width="450"/>
+<img src="https://github.com/rodrigogaraujo/app-finances/blob/main/Screenshot_20210825-004241.png" width="450"/>
+<img src="https://github.com/rodrigogaraujo/app-finances/blob/main/Screenshot_20210825-004245.png" width="450"/>
 
 # Contact
 rodrigoaraujo990@gmail.com
