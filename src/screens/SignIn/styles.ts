@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native'
 
@@ -46,5 +47,5 @@ export const Footer = styled.View`
 export const FooterWrapper = styled.View`
 width: 100%;
   padding: 0 ${RFValue(32)}px;
-  margin-top: ${RFPercentage(-14)}px;
+  margin-top: ${RFPercentage(Platform.OS === 'android' ? -25 : -14)}px;
 `;

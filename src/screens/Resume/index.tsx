@@ -22,6 +22,7 @@ import {
   Month,
 } from "./styles";
 import { subMonths } from "date-fns/esm";
+import { useAuth } from "../../hooks/Auth";
 
 export interface DataListProps extends TransactionCardProps {
   id: string;
@@ -37,6 +38,7 @@ interface TotalCategoryProps {
 }
 export function Resume() {
   const theme = useTheme();
+  const { user } = useAuth();
   const [totalByCategories, setTotalByCategories] = useState<
     TotalCategoryProps[]
   >([]);
@@ -54,7 +56,7 @@ export function Resume() {
   async function loadData() {
     setIsLoading(true);
     try {
-      const dataKey = "@gofinances:transactions";
+      const dataKey = `@gofinances:transactions:${user.email}`;
       const asyncData = await AsyncStorage.getItem(dataKey);
       const currentData = asyncData ? JSON.parse(asyncData) : [];
       const expensives = currentData.filter(

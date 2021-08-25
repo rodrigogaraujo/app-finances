@@ -27,6 +27,7 @@ import {
   Fields,
   TransactionsTypes,
 } from "./styles";
+import { useAuth } from "../../hooks/Auth";
 
 interface FormData {
   name: string;
@@ -49,6 +50,7 @@ const schema = yup.object().shape({
 
 export function Register() {
   const navigation = useNavigation<listScreenProp>();
+  const { user } = useAuth();
   const {
     control,
     handleSubmit,
@@ -95,7 +97,7 @@ export function Register() {
       category: category.key,
     };
     try {
-      const dataKey = "@gofinances:transactions";
+      const dataKey = `@gofinances:transactions:${user.email}`;
       const asyncData = await AsyncStorage.getItem(dataKey);
       const currentData = asyncData ? JSON.parse(asyncData) : [];
 
